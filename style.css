@@ -139,3 +139,8 @@
 .productDimensionsInline .dimX{display:inline-block;color:#9b4ca4;font-weight:900;padding:0 3px}
 .productDetail .productDimensionsInline{font-size:16px;text-align:start;background:#faf7fb;border:1px solid #eadfec;border-radius:12px;padding:10px 12px;margin:12px 0}
 @media(max-width:650px){.card .productDimensionsInline{font-size:8.5px;line-height:1.35;margin:0 0 5px;min-height:11px}.productDimensionsInline .dimX{padding:0 1px}.productDetail .productDimensionsInline{font-size:12px;padding:8px 10px}}
+/* Keep product number clear of discount ribbon */
+.card:has(.discountRibbon) .productNumber{top:58px!important;}
+@media(max-width:650px){
+  .card:has(.discountRibbon) .productNumber{top:46px!important;}
+}
