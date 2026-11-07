@@ -36,7 +36,7 @@ function setupRevealAnimations(){
   items.forEach((el,i)=>{
     el.classList.remove('scrollShown');
     el.classList.add('scrollFade');
-    el.style.setProperty('--reveal-delay',`${Math.min(i%8,7)*90}ms`);
+    el.style.setProperty('--reveal-delay',`${Math.min(i%8,7)*45}ms`);
   });
   if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('scrollShown'));return;}
   revealObserver=new IntersectionObserver(entries=>{

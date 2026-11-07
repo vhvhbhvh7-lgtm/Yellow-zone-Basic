@@ -193,12 +193,12 @@
 
 /* Smooth bidirectional scroll fade */
 #view .scrollFade{
-  opacity:.08!important;
-  transform:translateY(28px) scale(.992)!important;
-  filter:blur(1.5px);
-  transition:opacity 1.25s ease var(--reveal-delay,0ms),
-             transform 1.25s cubic-bezier(.22,.7,.2,1) var(--reveal-delay,0ms),
-             filter 1.15s ease var(--reveal-delay,0ms)!important;
+  opacity:.18!important;
+  transform:translateY(16px) scale(.996)!important;
+  filter:blur(.45px);
+  transition:opacity .68s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms),
+             transform .72s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms),
+             filter .55s ease var(--reveal-delay,0ms)!important;
   visibility:visible!important;
   pointer-events:auto!important;
 }
