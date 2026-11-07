@@ -144,3 +144,32 @@
 @media(max-width:650px){
   .card:has(.discountRibbon) .productNumber{top:46px!important;}
 }
+
+/* 2026-11 interactive motion pack */
+.scrollReveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+.scrollReveal.revealVisible{opacity:1;transform:translateY(0) scale(1)}
+@media(prefers-reduced-motion:reduce){.scrollReveal,.scrollReveal.revealVisible{opacity:1;transform:none;transition:none}}
+
+.add{position:relative;overflow:visible!important}
+.addImpact{animation:addImpact .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes addImpact{0%{transform:scale(1)}35%{transform:scale(.9) rotate(-1deg)}65%{transform:scale(1.09) rotate(1deg)}100%{transform:scale(1)}}
+.addBurstLayer{position:fixed;z-index:120;pointer-events:none;width:1px;height:1px}
+.logoParticle{position:absolute;left:-17px;top:-17px;width:34px;height:34px;border-radius:10px;background-image:url('assets/logo-animation-source.jpg');background-repeat:no-repeat;background-size:145px auto;filter:drop-shadow(0 5px 7px #0004);animation:logoBurst .9s cubic-bezier(.15,.75,.2,1) forwards;--angle:calc(var(--i) * 60deg)}
+.logoParticle.plane{background-position:85% 14%}
+.logoParticle.train{background-position:12% 88%}
+@keyframes logoBurst{0%{opacity:0;transform:translate(0,0) scale(.35) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(calc(cos(var(--angle))*78px),calc(sin(var(--angle))*78px)) scale(.85) rotate(240deg)}}
+/* fallback for browsers without trig functions */
+.logoParticle:nth-child(1){--tx:78px;--ty:0px}.logoParticle:nth-child(2){--tx:42px;--ty:66px}.logoParticle:nth-child(3){--tx:-42px;--ty:66px}.logoParticle:nth-child(4){--tx:-78px;--ty:0px}.logoParticle:nth-child(5){--tx:-42px;--ty:-66px}.logoParticle:nth-child(6){--tx:42px;--ty:-66px}
+@supports not (transform:translate(calc(cos(0deg)*1px),0)){@keyframes logoBurst{0%{opacity:0;transform:translate(0,0) scale(.35) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.85) rotate(240deg)}}}
+
+.whatsappJump{animation:whatsappJump .62s cubic-bezier(.2,.9,.2,1)}
+@keyframes whatsappJump{0%,100%{transform:translateY(0) scale(1)}35%{transform:translateY(-18px) scale(1.08) rotate(-5deg)}65%{transform:translateY(3px) scale(.96) rotate(3deg)}}
+.uiBounce{animation:uiBounce .5s ease}
+@keyframes uiBounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-7px) scale(1.04)}70%{transform:translateY(2px)}}
+
+.aboutPage{min-height:300px}
+.aboutLogoDecor{position:absolute;z-index:0;width:120px;height:92px;background-image:url('assets/logo-animation-source.jpg');background-repeat:no-repeat;background-size:360px auto;filter:drop-shadow(0 10px 14px #6a176633);opacity:.9;pointer-events:none}
+.aboutPlane{top:12px;inset-inline-end:12px;background-position:82% 12%;transform:rotate(5deg)}
+.aboutTrain{bottom:6px;inset-inline-start:8px;background-position:11% 90%;transform:rotate(-5deg)}
+.aboutTitle,.aboutPage p{position:relative;z-index:2}
+@media(max-width:650px){.aboutLogoDecor{width:82px;height:64px;background-size:250px auto;opacity:.78}.aboutPlane{top:6px;inset-inline-end:-4px}.aboutTrain{bottom:2px;inset-inline-start:-2px}}
