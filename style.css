@@ -212,10 +212,7 @@
 }
 
 /* 2026-11-07: distinct home section colours */
-.homeMainChips .homeChip{border-width:1px;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
-.homeMainChips .centersChip{background:#efb624;border-color:#efb624;color:#2b220b}
-.homeMainChips .roomsChip{background:#efe4f3;border-color:#cba9d1;color:#5f2367}
-.homeMainChips .sparePartsChip{background:#2f8f9d;border-color:#2f8f9d;color:#fff}
-.homeMainChips .projectsChip{background:#fff;border-color:#d7d1da;color:#332f35}
-.homeMainChips .homeChip:hover{filter:brightness(.97);transform:translateY(-1px)}
-.homeMainChips .homeChip.active{box-shadow:0 0 0 3px #ffffff,0 0 0 5px var(--p);transform:translateY(-1px)}
+.homeMainChips .homeChip{border-width:1px;background:#fff;border-color:#d7d1da;color:#332f35;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease}
+.homeMainChips .centersChip,.homeMainChips .roomsChip,.homeMainChips .sparePartsChip,.homeMainChips .projectsChip{background:#fff;border-color:#d7d1da;color:#332f35}
+.homeMainChips .homeChip:hover{filter:brightness(.985);transform:translateY(-1px)}
+.homeMainChips .homeChip.active{background:var(--gold);border-color:var(--gold);color:#2b220b;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(239,182,36,.35);transform:translateY(-1px)}
