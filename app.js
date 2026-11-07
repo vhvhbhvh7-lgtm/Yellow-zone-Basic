@@ -31,41 +31,14 @@ const icon=n=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[n]||
 function toast(msg){$('#toast').textContent=msg;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',4000)}
 let revealObserver=null;
 function setupRevealAnimations(){
-  if(revealObserver)revealObserver.disconnect();
-  const nodes=[...document.querySelectorAll('#view > *, #view .catalogGroup, #view .card, #view .serviceCard, #view .center, #view .aboutPage')];
-  if(!('IntersectionObserver' in window)){
-    nodes.forEach(el=>{el.classList.add('scrollReveal','revealVisible')});
-    return;
-  }
-  nodes.forEach(el=>el.classList.add('scrollReveal'));
-  revealObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('revealVisible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },{threshold:.02,rootMargin:'120px 0px 120px 0px'});
-  nodes.forEach(el=>revealObserver.observe(el));
-}
-function logoParticle(kind){
-  const el=document.createElement('span');
-  el.className=`logoParticle ${kind}`;
-  return el;
+  document.querySelectorAll('#view .scrollReveal').forEach(el=>el.classList.remove('scrollReveal','revealVisible'));
 }
 function playAddBurst(button){
-  const r=button.getBoundingClientRect();
-  const layer=document.createElement('div');
-  layer.className='addBurstLayer';
-  layer.style.left=`${r.left+r.width/2}px`;
-  layer.style.top=`${r.top+r.height/2}px`;
-  const parts=['plane','train','plane','train','plane','train'];
-  parts.forEach((kind,i)=>{
-    const p=logoParticle(kind); p.style.setProperty('--i',i); layer.appendChild(p);
-  });
-  document.body.appendChild(layer);
-  button.classList.remove('addImpact'); void button.offsetWidth; button.classList.add('addImpact');
-  setTimeout(()=>{layer.remove();button.classList.remove('addImpact')},950);
+  if(!button)return;
+  button.classList.remove('addImpact','addShockwave');
+  void button.offsetWidth;
+  button.classList.add('addImpact','addShockwave');
+  setTimeout(()=>button.classList.remove('addImpact','addShockwave'),650);
 }
 function bounceElement(el,cls='uiBounce'){if(!el)return;el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),650)}
 function route(){return location.hash.slice(1)||'home'}function go(r){if(route()===r)render();else location.hash=r;window.scrollTo(0,0)}
