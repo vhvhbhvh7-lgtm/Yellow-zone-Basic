@@ -33,10 +33,19 @@ let revealObserver=null;
 function setupRevealAnimations(){
   if(revealObserver)revealObserver.disconnect();
   const nodes=[...document.querySelectorAll('#view > *, #view .catalogGroup, #view .card, #view .serviceCard, #view .center, #view .aboutPage')];
+  if(!('IntersectionObserver' in window)){
+    nodes.forEach(el=>{el.classList.add('scrollReveal','revealVisible')});
+    return;
+  }
   nodes.forEach(el=>el.classList.add('scrollReveal'));
   revealObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>entry.target.classList.toggle('revealVisible',entry.isIntersecting));
-  },{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealVisible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.02,rootMargin:'120px 0px 120px 0px'});
   nodes.forEach(el=>revealObserver.observe(el));
 }
 function logoParticle(kind){
