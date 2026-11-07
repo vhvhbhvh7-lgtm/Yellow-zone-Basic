@@ -133,3 +133,9 @@
 .aboutTitle{display:flex;align-items:center;justify-content:center;gap:18px;position:relative;z-index:1}.aboutTitle span{height:3px;width:72px;background:var(--gold);border-radius:9px}.aboutTitle h1{margin:0;background:#f5e8f7;color:var(--p);padding:10px 38px;border-radius:999px;font-size:30px}.aboutPage p{position:relative;z-index:1;font-size:20px;line-height:2.15;text-align:center;margin:24px auto 0;max-width:860px;font-weight:600;color:#312936}
 .dimensionsBox{background:#faf7fb;border:1px solid #eadfec;border-radius:14px;padding:14px 16px;margin:14px 0}.dimensionsBox>div{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}.dimensionsBox span{background:#fff;border:1px solid #eee5f0;border-radius:10px;padding:8px 12px}
 @media(max-width:650px){.aboutPage{padding:22px 15px;border-radius:18px}.aboutTitle{gap:8px}.aboutTitle span{width:35px}.aboutTitle h1{font-size:22px;padding:8px 25px}.aboutPage p{font-size:15px;line-height:2}.dimensionsBox{font-size:12px;padding:10px}.dimensionsBox>div{gap:6px}.dimensionsBox span{padding:6px 8px}}
+
+/* Purple dimensions line under each product */
+.productDimensionsInline{color:var(--p);font-weight:800;text-align:center;font-size:13px;line-height:1.6;margin:-2px 0 8px;min-height:20px}
+.productDimensionsInline .dimX{display:inline-block;color:#9b4ca4;font-weight:900;padding:0 3px}
+.productDetail .productDimensionsInline{font-size:16px;text-align:start;background:#faf7fb;border:1px solid #eadfec;border-radius:12px;padding:10px 12px;margin:12px 0}
+@media(max-width:650px){.card .productDimensionsInline{font-size:8.5px;line-height:1.35;margin:0 0 5px;min-height:11px}.productDimensionsInline .dimX{padding:0 1px}.productDetail .productDimensionsInline{font-size:12px;padding:8px 10px}}
