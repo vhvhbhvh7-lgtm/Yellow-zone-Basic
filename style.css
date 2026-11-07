@@ -187,6 +187,6 @@
 
 /* Safe scroll reveal: visible by default; JS temporarily animates only while entering */
 #view .scrollShown{opacity:1!important;transform:none!important;visibility:visible!important;pointer-events:auto!important}
-#view .scrollIn{opacity:0;transform:translateY(22px) scale(.988);transition:opacity .48s ease var(--reveal-delay,0ms),transform .48s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms)}
+#view .scrollIn{opacity:0;transform:translateY(22px) scale(.988);transition:opacity .9s ease var(--reveal-delay,0ms),transform .9s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms)}
 #view .scrollIn.scrollShown{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){#view .scrollIn,#view .scrollShown{opacity:1!important;transform:none!important;transition:none!important}}

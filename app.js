@@ -35,7 +35,7 @@ function setupRevealAnimations(){
   if(revealObserver){try{revealObserver.disconnect()}catch(_){}}
   items.forEach((el,i)=>{
     el.classList.remove('scrollIn','scrollShown');
-    el.style.setProperty('--reveal-delay',`${Math.min(i%8,7)*55}ms`);
+    el.style.setProperty('--reveal-delay',`${Math.min(i%8,7)*120}ms`);
   });
   if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('scrollShown'));return;}
   items.forEach(el=>el.classList.add('scrollIn'));
@@ -49,7 +49,7 @@ function setupRevealAnimations(){
     });
   },{threshold:.06,rootMargin:'0px 0px -4% 0px'});
   items.forEach(el=>revealObserver.observe(el));
-  setTimeout(()=>items.forEach(el=>{el.classList.add('scrollShown');el.classList.remove('scrollIn')}),1200);
+  setTimeout(()=>items.forEach(el=>{el.classList.add('scrollShown');el.classList.remove('scrollIn')}),2400);
 }
 function playAddBurst(button){
   if(!button)return;
