@@ -168,11 +168,7 @@
 @keyframes uiBounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-7px) scale(1.04)}70%{transform:translateY(2px)}}
 
 .aboutPage{min-height:300px}
-.aboutLogoDecor{position:absolute;z-index:0;width:120px;height:92px;background-image:url('assets/logo-animation-source.jpg');background-repeat:no-repeat;background-size:360px auto;filter:drop-shadow(0 10px 14px #6a176633);opacity:.9;pointer-events:none}
-.aboutPlane{top:12px;inset-inline-end:12px;background-position:82% 12%;transform:rotate(5deg)}
-.aboutTrain{bottom:6px;inset-inline-start:8px;background-position:11% 90%;transform:rotate(-5deg)}
 .aboutTitle,.aboutPage p{position:relative;z-index:2}
-@media(max-width:650px){.aboutLogoDecor{width:82px;height:64px;background-size:250px auto;opacity:.78}.aboutPlane{top:6px;inset-inline-end:-4px}.aboutTrain{bottom:2px;inset-inline-start:-2px}}
 
 /* Reveal safety: products can never remain hidden after render */
 #view .card.revealVisible,#view .catalogGroup.revealVisible,#view .serviceCard.revealVisible,#view .center.revealVisible,#view .aboutPage.revealVisible{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
@@ -185,3 +181,12 @@
 #view .card.staggerInit{opacity:0;transform:translateY(18px) scale(.985);transition:opacity .42s ease var(--stagger-delay,0ms),transform .42s cubic-bezier(.2,.75,.2,1) var(--stagger-delay,0ms)}
 #view .card.staggerInit.staggerShow{opacity:1;transform:translateY(0) scale(1)}
 @media(prefers-reduced-motion:reduce){#view .card.staggerInit,#view .card.staggerInit.staggerShow{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* Final about cleanup: never show logo plane/train decorations */
+.aboutPage .aboutLogoDecor,.aboutPage .aboutPlane,.aboutPage .aboutTrain{display:none!important;background-image:none!important}
+
+/* Safe scroll reveal: visible by default; JS temporarily animates only while entering */
+#view .scrollShown{opacity:1!important;transform:none!important;visibility:visible!important;pointer-events:auto!important}
+#view .scrollIn{opacity:0;transform:translateY(22px) scale(.988);transition:opacity .48s ease var(--reveal-delay,0ms),transform .48s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms)}
+#view .scrollIn.scrollShown{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){#view .scrollIn,#view .scrollShown{opacity:1!important;transform:none!important;transition:none!important}}

@@ -31,15 +31,25 @@ const icon=n=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[n]||
 function toast(msg){$('#toast').textContent=msg;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',4000)}
 let revealObserver=null;
 function setupRevealAnimations(){
-  const cards=[...document.querySelectorAll('#view .card')];
-  cards.forEach((el,i)=>{
-    el.classList.remove('staggerInit','staggerShow');
-    el.style.setProperty('--stagger-delay',`${Math.min(i,20)*45}ms`);
-    el.classList.add('staggerInit');
+  const items=[...document.querySelectorAll('#view .card,#view .catalogGroup,#view .serviceCard,#view .center,#view .aboutPage,#view .panel:not(.productDetail)')];
+  if(revealObserver){try{revealObserver.disconnect()}catch(_){}}
+  items.forEach((el,i)=>{
+    el.classList.remove('scrollIn','scrollShown');
+    el.style.setProperty('--reveal-delay',`${Math.min(i%8,7)*55}ms`);
   });
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    cards.forEach(el=>el.classList.add('staggerShow'));
-  }));
+  if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('scrollShown'));return;}
+  items.forEach(el=>el.classList.add('scrollIn'));
+  revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('scrollShown');
+        entry.target.classList.remove('scrollIn');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.06,rootMargin:'0px 0px -4% 0px'});
+  items.forEach(el=>revealObserver.observe(el));
+  setTimeout(()=>items.forEach(el=>{el.classList.add('scrollShown');el.classList.remove('scrollIn')}),1200);
 }
 function playAddBurst(button){
   if(!button)return;
