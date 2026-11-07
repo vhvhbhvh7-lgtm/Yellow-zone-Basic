@@ -210,3 +210,12 @@
 @media(prefers-reduced-motion:reduce){
   #view .scrollFade,#view .scrollFade.scrollShown{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
 }
+
+/* 2026-11-07: distinct home section colours */
+.homeMainChips .homeChip{border-width:1px;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.homeMainChips .centersChip{background:#efb624;border-color:#efb624;color:#2b220b}
+.homeMainChips .roomsChip{background:#efe4f3;border-color:#cba9d1;color:#5f2367}
+.homeMainChips .sparePartsChip{background:#2f8f9d;border-color:#2f8f9d;color:#fff}
+.homeMainChips .projectsChip{background:#fff;border-color:#d7d1da;color:#332f35}
+.homeMainChips .homeChip:hover{filter:brightness(.97);transform:translateY(-1px)}
+.homeMainChips .homeChip.active{box-shadow:0 0 0 3px #ffffff,0 0 0 5px var(--p);transform:translateY(-1px)}
