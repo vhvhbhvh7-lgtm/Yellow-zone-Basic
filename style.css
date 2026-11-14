@@ -220,3 +220,6 @@
 .customerTypePicker{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.customerTypePicker label{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #ded8e2;border-radius:12px;padding:16px;cursor:pointer;font-weight:800;background:#fff}.customerTypePicker input{width:auto;margin:0}.customerTypePicker label:has(input:checked){border-color:var(--p);background:#f7eef8;color:var(--p)}@media(max-width:650px){.customerTypePicker{grid-template-columns:1fr 1fr;gap:8px}.customerTypePicker label{padding:13px 8px;font-size:14px}}
 
 #businessFields[hidden],#individualFields[hidden]{display:none!important}
+
+/* Grouped playground catalogue */
+.playgroundRowTitle{color:#74277d;margin:28px 0 14px;font-size:clamp(1.1rem,2vw,1.5rem);padding:8px 14px;border-inline-start:4px solid #e9b72a;background:#fff;border-radius:9px}.catalogGroup>.grid{margin-bottom:18px}.catalogGroup .grid{margin-bottom:20px}
