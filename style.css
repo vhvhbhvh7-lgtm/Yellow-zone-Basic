@@ -223,3 +223,40 @@
 
 /* Grouped playground catalogue */
 .playgroundRowTitle{color:#74277d;margin:28px 0 14px;font-size:clamp(1.1rem,2vw,1.5rem);padding:8px 14px;border-inline-start:4px solid #e9b72a;background:#fff;border-radius:9px}.catalogGroup>.grid{margin-bottom:18px}.catalogGroup .grid{margin-bottom:20px}
+
+/* services-lead-times-20261115 */
+.sectionLeadTime{
+margin:12px 0 20px;
+padding:15px 20px;
+border:2px solid #81298a;
+border-radius:14px;
+background:#fff;
+color:#81298a;
+font-size:17px;
+font-weight:800;
+text-align:center;
+}
+.servicesGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.serviceCard{
+border:2px solid #81298a!important;
+border-radius:18px;
+padding:20px;
+box-shadow:0 10px 25px rgba(129,41,138,.08);
+}
+.serviceCard>span{
+display:grid;
+place-items:center;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#81298a!important;
+color:#fff;
+font-weight:900;
+}
+@media(max-width:1000px){
+.servicesGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+.servicesGrid{grid-template-columns:1fr}
+.sectionLeadTime{padding:11px 13px;font-size:14px}
+}
