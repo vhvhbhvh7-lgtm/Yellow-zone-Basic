@@ -31,7 +31,7 @@ const hasPrice=p=>p?.price_visible!==false;
 const vatRate=.15;
 const vatAmount=()=>Math.round(total()*vatRate*100)/100;
 const grandTotal=()=>Math.round((total()+vatAmount())*100)/100;
-const stableProductSort=(a,b)=>{const ac=String(a?.created_at||''),bc=String(b?.created_at||'');if(ac&&bc&&ac!==bc)return ac.localeCompare(bc);if(ac&&!bc)return -1;if(!ac&&bc)return 1;return String(a?.id||'').localeCompare(String(b?.id||''));};
+const stableProductSort=(a,b)=>{const ao=Number(a?.sort_order),bo=Number(b?.sort_order);if(Number.isFinite(ao)&&Number.isFinite(bo)&&ao!==bo)return ao-bo;const ac=String(a?.created_at||''),bc=String(b?.created_at||'');if(ac&&bc&&ac!==bc)return ac.localeCompare(bc);if(ac&&!bc)return -1;if(!ac&&bc)return 1;return String(a?.id||'').localeCompare(String(b?.id||''));};
 const productNumber=p=>{const list=[...data.sm_products].sort(stableProductSort);const i=list.findIndex(x=>x.id===p.id);return i>=0?i+1:''};
 
 function dimensionsLine(p){
@@ -112,7 +112,7 @@ function catalog(){
  const head=`<div class="row"><h2>${sectionTitle}</h2><span>${products.length} ${t('منتج','products')}</span></div>`;
  if(!products.length)return head+`<p class="empty">${t('لا توجد منتجات مطابقة. جرّب كلمة أخرى.','No matching products. Try another keyword.')}</p>`;
  const groups=[...new Set(products.map(p=>p.group_key||'other'))].sort((a,b)=>groupOrder(a)-groupOrder(b));
- return head+`<div class="catalogGroups">${groups.map(g=>{const subset=products.filter(p=>(p.group_key||'other')===g);const rows=[...new Set(subset.map(rowType))].sort((a,b)=>(['halls','mazes','trampoline','balls','slides','rooms',''].indexOf(a))-(['halls','mazes','trampoline','balls','slides','rooms',''].indexOf(b)));return `<section class="catalogGroup"><div class="groupTitle"><h3>${esc(groupLabel(g))}</h3><span>${subset.length}</span></div>${rows.map(k=>{const items=subset.filter(p=>rowType(p)===k);return `${k?`<h3 class="playgroundRowTitle">${esc(t(...rowMeta[k]))}</h3>`:''}<div class="grid">${items.map(productCard).join('')}</div>`}).join('')}</section>`}).join('')}</div>`;
+ return head+`<div class="catalogGroups">${groups.map(g=>{const subset=products.filter(p=>(p.group_key||'other')===g);return `<section class="catalogGroup"><div class="groupTitle"><h3>${esc(groupLabel(g))}</h3><span>${subset.length}</span></div><div class="grid">${subset.map(productCard).join('')}</div></section>`}).join('')}</div>`;
 }
 function cartRows(){return Object.entries(cart).map(([id,n])=>{const p=data.sm_products.find(p=>p.id===id),known=p&&hasPrice(p),sum=p?unitPrice(p)*n:0;return `<div class="cartrow">${p?.image?`<img src="${esc(safeURL(p.image))}" alt="">`:'<span></span>'}<div>${esc(p?field(p,'name'):t('منتج غير متاح — احذفه لإكمال الطلب','Unavailable item — remove to continue'))}<small>${p?(known?money(sum):t('السعر عند الطلب','Price on request')):''}</small><button type="button" data-remove="${id}">${t('حذف','Remove')}</button></div><div class="qty"><button type="button" data-delta="-1" data-id="${id}">−</button><input type="number" min="1" max="100000" value="${Number(n)}" data-qty="${id}" aria-label="${t('الكمية','Quantity')}"><button type="button" data-delta="1" data-id="${id}">+</button></div></div>`}).join('')}
 function total(){return Object.entries(cart).reduce((sum,[id,n])=>{const p=data.sm_products.find(p=>p.id===id);return sum+(p&&hasPrice(p)?unitPrice(p)*n:0)},0)}
