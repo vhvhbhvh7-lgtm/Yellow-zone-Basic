@@ -750,3 +750,79 @@ html{
     transition-duration:.01ms!important;
   }
 }
+
+/* ===== LIGHT PERFORMANCE PATCH ===== */
+
+header{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+body{
+  background:#faf8fb!important;
+}
+
+.hero,
+.catalogGroup,
+.card,
+.panel,
+.servicesPage,
+.serviceCard,
+.sectionNav,
+.sectionLeadTime{
+  box-shadow:0 5px 14px rgba(80,30,90,.06)!important;
+}
+
+.card,
+.serviceCard,
+.homeChip,
+.sectionNav button,
+.heroActions button,
+.heroQuickAction{
+  transition:
+    transform .16s ease,
+    background .16s ease,
+    border-color .16s ease!important;
+}
+
+.card:hover .photo img{
+  transform:none!important;
+}
+
+.card:hover,
+.serviceCard:hover{
+  transform:translateY(-2px)!important;
+}
+
+.servicesPage::before,
+.servicesPage::after,
+.serviceCard::after,
+.sectionLeadTime::before,
+.hero::after{
+  display:none!important;
+}
+
+@media(max-width:650px){
+
+  .card,
+  .serviceCard,
+  .homeChip,
+  .sectionNav button{
+    transition:none!important;
+  }
+
+  .card:hover,
+  .serviceCard:hover,
+  .homeChip:hover,
+  .sectionNav button:hover{
+    transform:none!important;
+  }
+
+  .card,
+  .catalogGroup,
+  .panel,
+  .serviceCard{
+    box-shadow:0 3px 8px rgba(80,30,90,.04)!important;
+  }
+}
+
